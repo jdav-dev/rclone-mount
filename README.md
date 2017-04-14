@@ -1,4 +1,6 @@
 # rclone-mount
+[![](https://images.microbadger.com/badges/version/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
+[![](https://images.microbadger.com/badges/image/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
 
 Mount cloud storage using [rclone](https://rclone.org/),
 [unionfs-fuse](https://github.com/rpodgorny/unionfs-fuse), and
@@ -7,8 +9,9 @@ Mount cloud storage using [rclone](https://rclone.org/),
 `rclone`'s FUSE support is **EXPERIMENTAL** (see
 [here](https://rclone.org/commands/rclone_mount/)), so the `rclone` remote is
 mounted as read-only.  `unionfs-fuse` adds a writable layer, using a local
-directory to cache changes.  Scripts run on a schedule to persist changes to
-the `rclone` remote.
+directory to cache changes.
+[Scripts](https://github.com/jdavis92/rclone-mount/tree/master/scripts) run on
+a schedule to persist changes to the `rclone` remote.
 
 ```
 docker run -d --name rclone-mount \
