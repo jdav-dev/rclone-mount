@@ -2,16 +2,9 @@
 [![](https://images.microbadger.com/badges/version/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
 [![](https://images.microbadger.com/badges/image/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
 
-Mount cloud storage using [rclone](https://rclone.org/),
-[unionfs-fuse](https://github.com/rpodgorny/unionfs-fuse), and
-[Docker](https://www.docker.com/).
+Mount cloud storage using [rclone](https://rclone.org/), [unionfs-fuse](https://github.com/rpodgorny/unionfs-fuse), and [Docker](https://www.docker.com/).
 
-`rclone`'s FUSE support is **EXPERIMENTAL** (see
-[here](https://rclone.org/commands/rclone_mount/)), so the `rclone` remote is
-mounted as read-only.  `unionfs-fuse` adds a writable layer, using a local
-directory to cache changes.
-[Scripts](https://github.com/jdavis92/rclone-mount/tree/master/scripts) run on
-a schedule to persist changes to the `rclone` remote.
+`rclone`'s FUSE support is **EXPERIMENTAL** (see [here](https://rclone.org/commands/rclone_mount/)), so the `rclone` remote is mounted as read-only.  `unionfs-fuse` adds a writable layer, using a local directory to cache changes.  [Scripts](https://github.com/jdavis92/rclone-mount/tree/master/scripts) run on a schedule to persist changes to the `rclone` remote.
 
 ```
 docker run -d --name rclone-mount \
@@ -48,15 +41,12 @@ Mount the `unionfs-fuse` directory:
 -v /local/mount/target:/mnt/unionfs:shared
 ```
 
-Mount the local file cache.  Prevents data loss if the docker container goes
-down before local changes are persisted to the `rclone` remote:
+Mount the local file cache.  Prevents data loss if the docker container goes down before local changes are persisted to the `rclone` remote:
 ```
 -v rclone_local:/tmp/local
 ```
 
-Change the CRON schedule for persisting changes to the `rclone` remote (see
-[here](https://en.wikipedia.org/wiki/Cron#CRON_expression) for help with CRON
-expressions):
+Change the CRON schedule for persisting changes to the `rclone` remote (see [here](https://en.wikipedia.org/wiki/Cron#CRON_expression) for help with CRON expressions):
 ```
 -e SCHEDULE="0 9 * * *"
 ```
