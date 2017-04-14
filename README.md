@@ -1,6 +1,5 @@
 # rclone-mount
-[![](https://images.microbadger.com/badges/version/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
-[![](https://images.microbadger.com/badges/image/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
+[![](https://images.microbadger.com/badges/version/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount) [![](https://images.microbadger.com/badges/image/jdavis92/rclone-mount.svg)](https://microbadger.com/images/jdavis92/rclone-mount)
 
 Mount cloud storage using [rclone](https://rclone.org/), [unionfs-fuse](https://github.com/rpodgorny/unionfs-fuse), and [Docker](https://www.docker.com/).
 
