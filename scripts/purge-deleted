@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export UNIONFS_DIR="/mnt/unionfs/.unionfs-fuse/"
+export SUFFIX="_HIDDEN~"
+
+function purge {
+    set -e
+    REMOTE_PATH="$0"
+    REMOTE_PATH="${REMOTE_PATH#$UNIONFS_DIR}"
+    REMOTE_PATH="${REMOTE_PATH%$SUFFIX}"
+    set -x
+    rclone delete --include="$REMOTE_PATH" $RCLONE_REMOTE:
+    rm $0
+}
+export -f purge
+
+find $UNIONFS_DIR -name *$SUFFIX -exec /bin/bash -c 'purge "$0"' {} \;

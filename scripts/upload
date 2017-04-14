@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export LOCAL_DIR="/tmp/local/"
+
+function upload {
+    set -e
+    LOCAL_PATH="$0"
+    REMOTE_PATH="${LOCAL_PATH#$LOCAL_DIR}"
+    REMOTE_DIR=`dirname $REMOTE_PATH`
+    set -x
+    rclone move "$LOCAL_PATH" $RCLONE_REMOTE:$REMOTE_DIR
+}
+export -f upload
+
+find $LOCAL_DIR -type f -exec /bin/bash -c 'upload "$0"' {} \;

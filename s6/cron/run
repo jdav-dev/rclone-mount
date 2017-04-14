@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+/bin/s6-svwait -u /etc/s6/unionfs
+
+/bin/echo "$SCHEDULE /usr/local/bin/purge-deleted && /usr/local/bin/upload" > /var/spool/cron/crontabs/rclone
+
+/usr/sbin/crond -f

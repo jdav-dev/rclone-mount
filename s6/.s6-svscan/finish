@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+/bin/umount -f /mnt/unionfs
+
+/bin/umount -f /mnt/rclone
