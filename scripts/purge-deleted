@@ -9,7 +9,7 @@ function purge {
     REMOTE_PATH="${REMOTE_PATH#$UNIONFS_DIR}"
     REMOTE_PATH="${REMOTE_PATH%$SUFFIX}"
     set -x
-    rclone delete --include="$REMOTE_PATH" "$RCLONE_REMOTE:"
+    rclone delete -vv --include="$REMOTE_PATH" "$RCLONE_REMOTE:"
     rm -r "$0"
 }
 export -f purge
