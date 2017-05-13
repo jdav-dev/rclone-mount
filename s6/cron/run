@@ -2,6 +2,6 @@
 
 /bin/s6-svwait -u /etc/s6/unionfs
 
-/bin/echo "$SCHEDULE /usr/local/bin/purge-deleted && /usr/local/bin/upload" > /var/spool/cron/crontabs/rclone
+/bin/echo "$SCHEDULE /usr/local/bin/purge-deleted && /usr/local/bin/upload" > /var/spool/cron/crontabs/root
 
-/usr/sbin/crond -f
+/usr/sbin/crond -f -l 0

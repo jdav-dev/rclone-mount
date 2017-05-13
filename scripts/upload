@@ -7,6 +7,7 @@ function upload {
     LOCAL_PATH="$0"
     REMOTE_PATH="${LOCAL_PATH#$LOCAL_DIR}"
     REMOTE_DIR=`dirname "$REMOTE_PATH"`
+    du -sh "$LOCAL_PATH"
     set -x
     rclone move "$LOCAL_PATH" "$RCLONE_REMOTE:$REMOTE_DIR"
 }
